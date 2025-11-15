@@ -10,5 +10,6 @@ Current WIP goals are:
 - Deployment on Play store
 - Integration with smart watches
 
-![workout_list_screenshot](https://github.com/user-attachments/assets/64a5f0ff-2f6d-41c0-bc4b-ee7462bebfd6)
-![workout_screenshot](https://github.com/user-attachments/assets/a3783805-d869-4e59-8518-cead0a641cb5)
+
+![workout_list_screenshot30pc](https://github.com/user-attachments/assets/fc247ff8-5ff0-4e6f-855a-d800833a74b3)
+![workout_screenshot30pc](https://github.com/user-attachments/assets/11b85855-88d4-451a-a8cd-d48928da4973)
