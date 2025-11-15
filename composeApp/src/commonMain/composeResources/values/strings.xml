@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="search_hint">Search...</string>
+    <string name="close_hint">Clear search</string>
+    <string name="search_results">Search Results</string>
+    <string name="favourites">Favourites</string>
+    <string name="no_search_results">You haven't got any workouts with that name!</string>
+    <string name="no_favourites">You haven't saved any workouts with that name!</string>
+    <string name="muscle_group_image">Muscle group image</string>
+    <string name="reps">Reps</string>
+    <string name="sets">Sets</string>
+    <string name="weight">Weight</string>
+    <string name="go_back">Go back</string>
+    <string name="favourite_button">Mark as favourite</string>
+    <string name="remove_from_favourites">Remove from favourites</string>
+
+    // errors
+    <string name="error_disk_full">Oops, your disk is full!</string>
+    <string name="error_unknown">Oops, an unknown error occurred.</string>
+    <string name="error_no_internet">You are not connected to the internet - please connect and try again.</string>
+
+
+
+</resources>
