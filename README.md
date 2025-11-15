@@ -11,3 +11,4 @@ Current WIP goals are:
 - Integration with smart watches
 
 ![workout_list_screenshot](https://github.com/user-attachments/assets/64a5f0ff-2f6d-41c0-bc4b-ee7462bebfd6)
+![workout_screenshot](https://github.com/user-attachments/assets/a3783805-d869-4e59-8518-cead0a641cb5)
