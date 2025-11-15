@@ -9,3 +9,5 @@ Current WIP goals are:
 - Room persistence
 - Deployment on Play store
 - Integration with smart watches
+
+![workout_list_screenshot](https://github.com/user-attachments/assets/64a5f0ff-2f6d-41c0-bc4b-ee7462bebfd6)
