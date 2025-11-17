@@ -1,14 +1,15 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+WorkoutTracker is a work-in-progress Kotlin Multiplatform project to track exercise details offline in an intuitive way.
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+It is built with MVVM architecture using Koin to share viewmodels, a Room database as offline persistent storage, and a
+Compose UI shared across Android, IOS and Desktop. WT will remain serverless and store data locally, acting as a simple 
+and quick app to store workout information without internet connection, subscriptions or AI suggestions.
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+Current WIP goals are:
+
+- Room persistence
+- Deployment on Play store
+- Integration with smart watches
 
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+![workout_list_screenshot30pc](https://github.com/user-attachments/assets/fc247ff8-5ff0-4e6f-855a-d800833a74b3)
+![workout_screenshot30pc](https://github.com/user-attachments/assets/11b85855-88d4-451a-a8cd-d48928da4973)
