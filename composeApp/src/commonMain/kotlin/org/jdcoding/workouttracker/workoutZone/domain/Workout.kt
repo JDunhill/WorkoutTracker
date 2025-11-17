@@ -6,7 +6,7 @@ data class Workout(
     val sets: Int = 0,
     val reps: Int = 0,
     val duration: String? = "",
-    val weight: Float?,
+    val weight: Double?,
     val weightUnit: String?,
     val icon: String?
 )

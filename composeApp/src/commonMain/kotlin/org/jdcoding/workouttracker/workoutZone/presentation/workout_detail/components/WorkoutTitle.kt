@@ -20,7 +20,7 @@ fun WorkoutTitle(
     ) {
         Text(
             text = title,
-            style = MaterialTheme.typography.titleSmall
+            style = MaterialTheme.typography.titleMedium
         )
         content()
     }

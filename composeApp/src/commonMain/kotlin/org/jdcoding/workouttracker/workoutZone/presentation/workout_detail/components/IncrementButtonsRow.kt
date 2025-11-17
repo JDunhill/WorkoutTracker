@@ -27,14 +27,17 @@ fun IncrementButtonsRow(
     onMinusClick: () -> Unit
 ) {
     Row(
-        horizontalArrangement = Arrangement.spacedBy(30.dp),
+        horizontalArrangement = Arrangement.spacedBy(50.dp),
     ) {
         val image: Painter
         IconButton(
-            modifier = Modifier,
+            modifier = Modifier
+                .size(40.dp),
             onClick = onPlusClick,
         ) {
             Icon(
+                modifier = Modifier
+                .size(40.dp),
                 imageVector = Icons.Filled.Add,
                 contentDescription = "Increase button", //TODO: add to stringsxml
                 tint = Color.LightGray
@@ -43,11 +46,11 @@ fun IncrementButtonsRow(
         IconButton(
             modifier = Modifier
                 .size(40.dp),
-            onClick = onMinusClick
+            onClick = onMinusClick,
         ) {
             Icon(
                 modifier = Modifier
-                    .padding(top = 8.dp),
+                    .size(40.dp),
                 painter = painterResource(Res.drawable.minus_icon),
                 contentDescription = "Decrease button", //TODO: add to stringsxml
                 tint = Color.LightGray,
