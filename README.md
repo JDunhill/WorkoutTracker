@@ -1,4 +1,4 @@
-WorkoutTracker is a work-in-progress Kotlin Multiplatform project to track exercise details offline in an intuitive way.
+WorkoutTracker is a work-in-progress Compose Multiplatform project to track exercise details offline in an intuitive way.
 
 It is built with MVVM architecture using Koin to share viewmodels, a Room database as offline persistent storage, and a
 Compose UI shared across Android, IOS and Desktop. WT will remain serverless and store data locally, acting as a simple 
