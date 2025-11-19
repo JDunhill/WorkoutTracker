@@ -26,4 +26,7 @@ interface WorkoutDao {
 
     @Query("UPDATE WorkoutEntity SET isFavourite = false WHERE id = :id AND isFavourite = true")
     suspend fun deleteFavouriteWorkout(id: String)
+
+    @Query("UPDATE WorkoutEntity SET isFavourite = true WHERE id = :id AND isFavourite = false")
+    suspend fun markAsFavourite(id: String)
 }

@@ -11,7 +11,8 @@ interface WorkoutRepository {
     fun getFavouriteWorkouts(): Flow<List<Workout>>
     fun getWorkouts(): Flow<List<Workout>>
     fun isWorkoutFavourite(id: String): Flow<Boolean>
-    suspend fun markAsFavourite(workout: Workout): EmptyResult<DataError.Local>
+    suspend fun addWorkout(workout: Workout): EmptyResult<DataError.Local>
+    suspend fun markAsFavourite(id: String)
     suspend fun deleteFromFavourites(id: String)
     suspend fun deleteWorkout(id: String)
     suspend fun searchWorkouts(id: String): Result<List<Workout>, DataError.Local>

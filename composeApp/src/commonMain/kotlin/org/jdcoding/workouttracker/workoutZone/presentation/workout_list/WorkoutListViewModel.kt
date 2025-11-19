@@ -32,6 +32,11 @@ class WorkoutListViewModel(
                 observeSearchQuery()
             }
             observeFavouriteWorkouts()
+
+            // TODO: currently dummy data
+            workouts.forEach { workout ->
+                workoutRepository.addWorkout(workout)
+            }
         }
         .stateIn(
             viewModelScope,

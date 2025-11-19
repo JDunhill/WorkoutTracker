@@ -51,7 +51,7 @@ class WorkoutDetailViewModel(
                         workoutRepository.deleteFromFavourites(workoutId)
                     } else {
                         state.value.workout?.let { workout ->
-                            workoutRepository.markAsFavourite(workout)
+                            workoutRepository.markAsFavourite(workout.id)
                         }
                     }
                 }

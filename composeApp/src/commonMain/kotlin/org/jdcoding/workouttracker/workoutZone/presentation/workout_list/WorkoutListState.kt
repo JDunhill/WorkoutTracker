@@ -12,7 +12,7 @@ data class WorkoutListState(
     var errorMessage: UiText? = null
 )
 
-
+// TODO: dummy data
 public val workouts = (1 .. 20).map {
     Workout(
         id = it.toString(),

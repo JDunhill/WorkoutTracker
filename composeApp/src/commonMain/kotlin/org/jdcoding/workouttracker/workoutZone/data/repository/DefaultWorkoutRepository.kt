@@ -32,14 +32,8 @@ class DefaultWorkoutRepository(
             }
     }
 
-    override suspend fun markAsFavourite(workout: Workout): EmptyResult<DataError.Local> {
-        return try {
-            workoutDao.upsert(workout.toWorkoutEntity())
-            Result.Success(Unit)
-        } catch(e: SQLiteException) {
-            // CMP doesn't support specific SQLite exceptions (i.e. no storage space), so return generic
-            Result.Error(DataError.Local.DISK_FULL)
-        }
+    override suspend fun markAsFavourite(id: String) {
+            workoutDao.markAsFavourite(id)
     }
 
     override suspend fun deleteFromFavourites(id: String) {
@@ -56,6 +50,16 @@ class DefaultWorkoutRepository(
             .map { workoutEntities ->
                 workoutEntities.any { it.id == id }
             }
+    }
+
+    override suspend fun addWorkout(workout: Workout): EmptyResult<DataError.Local> {
+        return try {
+            workoutDao.upsert(workout.toWorkoutEntity())
+            Result.Success(Unit)
+        } catch(e: SQLiteException) {
+            // CMP doesn't support specific SQLite exceptions (i.e. no storage space), so return generic
+            Result.Error(DataError.Local.DISK_FULL)
+        }
     }
 
     override suspend fun searchWorkouts(id: String): Result<List<Workout>, DataError.Local> {
