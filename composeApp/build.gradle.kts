@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.ksp)
-//    alias(libs.plugins.room)
+    alias(libs.plugins.room)
     kotlin("plugin.serialization") version "2.2.21"
 }
 
@@ -33,9 +33,9 @@ kotlin {
 
     jvm("desktop")
 
-//    room {
-//        schemaDirectory("$projectDir/schemas")
-//    }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
 
     sourceSets {
         val desktopMain by getting
@@ -75,9 +75,9 @@ kotlin {
         }
 
 
-//        dependencies {
-//            ksp(libs.androidx.room.compiler)
-//        }
+        dependencies {
+            ksp(libs.androidx.room.compiler)
+        }
     }
 }
 

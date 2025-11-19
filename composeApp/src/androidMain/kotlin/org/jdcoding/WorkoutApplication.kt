@@ -1,4 +1,4 @@
-package org.jdcoding.workouttracker
+package org.jdcoding
 
 import android.app.Application
 import org.jdcoding.di.initKoin

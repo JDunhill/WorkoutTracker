@@ -12,7 +12,8 @@ data class WorkoutEntity(
     val weightUnit: String?,
     val duration: String?,
     val sets: Int?,
-    val reps: Int?
+    val reps: Int?,
+    val isFavourite: Boolean
 ) {
 
 

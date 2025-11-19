@@ -12,6 +12,21 @@ fun Workout.toWorkoutEntity(): WorkoutEntity {
         weightUnit = weightUnit,
         duration = duration,
         sets = sets,
-        reps = reps
+        reps = reps,
+        isFavourite = isFavourite
+    )
+}
+
+fun WorkoutEntity.toWorkout(): Workout {
+    return Workout(
+        id = id,
+        name = name,
+        icon = icon,
+        weight = weight,
+        weightUnit = weightUnit,
+        duration = duration,
+        sets = sets,
+        reps = reps,
+        isFavourite = isFavourite
     )
 }

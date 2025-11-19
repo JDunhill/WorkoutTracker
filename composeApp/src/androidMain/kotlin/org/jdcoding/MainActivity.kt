@@ -1,4 +1,4 @@
-package org.jdcoding.workouttracker
+package org.jdcoding
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

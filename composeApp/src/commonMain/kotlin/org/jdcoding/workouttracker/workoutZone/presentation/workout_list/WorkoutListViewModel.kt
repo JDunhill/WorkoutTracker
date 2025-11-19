@@ -31,6 +31,7 @@ class WorkoutListViewModel(
             if(cachedWorkouts.isEmpty()) {
                 observeSearchQuery()
             }
+            observeFavouriteWorkouts()
         }
         .stateIn(
             viewModelScope,
@@ -40,6 +41,7 @@ class WorkoutListViewModel(
 
     private var cachedWorkouts = emptyList<Workout>()
     private var searchJob: Job? = null
+    private var observeFavouriteJob: Job? = null
 
     fun onAction(action: WorkoutListAction) {
         when(action) {
@@ -57,6 +59,18 @@ class WorkoutListViewModel(
 
             }
         }
+    }
+
+    private fun observeFavouriteWorkouts() {
+        observeFavouriteJob?.cancel()
+        observeFavouriteJob = workoutRepository
+            .getFavouriteWorkouts()
+            .onEach { favouriteWorkouts ->
+                _state.update { it.copy(
+                    favouriteWorkouts = favouriteWorkouts
+                ) }
+            }
+            .launchIn(viewModelScope)
     }
 
     private fun observeSearchQuery() {

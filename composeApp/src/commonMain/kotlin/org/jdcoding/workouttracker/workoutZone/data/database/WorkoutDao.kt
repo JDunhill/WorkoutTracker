@@ -15,9 +15,15 @@ interface WorkoutDao {
     @Query("SELECT * FROM WorkoutEntity")
     fun getWorkouts(): Flow<List<WorkoutEntity>>
 
+    @Query("SELECT * FROM WorkoutEntity WHERE isFavourite = true")
+    fun getFavouriteWorkouts(): Flow<List<WorkoutEntity>>
+
     @Query("SELECT * FROM WorkoutEntity WHERE id = :id")
     suspend fun getWorkout(id: String): WorkoutEntity?
 
     @Query("DELETE FROM WorkoutEntity WHERE id = :id")
     suspend fun deleteWorkout(id: String)
+
+    @Query("UPDATE WorkoutEntity SET isFavourite = false WHERE id = :id AND isFavourite = true")
+    suspend fun deleteFavouriteWorkout(id: String)
 }

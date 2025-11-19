@@ -22,6 +22,7 @@ public val workouts = (1 .. 20).map {
         duration = (0..60).random().toString(),
         weight = 15.0,
         weightUnit = "kg",
-        icon = "chest"
+        icon = "chest",
+        isFavourite = false
     )
 }
