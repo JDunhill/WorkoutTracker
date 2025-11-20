@@ -5,7 +5,8 @@ import org.jdcoding.workouttracker.workoutZone.domain.Workout
 
 data class WorkoutListState(
     val searchQuery: String = "",
-    val searchResults: List<Workout> = workouts, // TODO: using dummy data
+    val currentWorkouts: List<Workout> = emptyList(),
+    val searchResults: List<Workout> = emptyList(),
     val favouriteWorkouts: List<Workout> = emptyList(),
     val isLoading: Boolean = false,
     val selectedTabIndex: Int = 0,
@@ -16,7 +17,7 @@ data class WorkoutListState(
 public val workouts = (1 .. 20).map {
     Workout(
         id = it.toString(),
-        name = "Workout $it",
+        name = "Workout ${if(it < 5) 5 else it}",
         sets = (0..4).random(),
         reps = (0..12).random(),
         duration = (0..60).random().toString(),

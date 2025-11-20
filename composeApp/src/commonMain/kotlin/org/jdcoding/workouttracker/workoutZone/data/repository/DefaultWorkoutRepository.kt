@@ -2,7 +2,10 @@ package org.jdcoding.workouttracker.workoutZone.data.repository
 
 import androidx.sqlite.SQLiteException
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.forEach
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import org.jdcoding.core.domain.DataError
 import org.jdcoding.core.domain.EmptyResult
 import org.jdcoding.core.domain.Result
@@ -62,8 +65,17 @@ class DefaultWorkoutRepository(
         }
     }
 
-    override suspend fun searchWorkouts(id: String): Result<List<Workout>, DataError.Local> {
-        val emptyList = emptyList<Workout>()
-        return Result.Success(emptyList)
+    override fun searchWorkouts(query: String): Flow<List<Workout>> {
+        println("Searching for $query")
+        return workoutDao
+            .searchWorkouts(query)
+            .map { workoutEntity ->
+                workoutEntity.map {
+                    it.toWorkout()
+                }
+                    .onEach { println(it.toString()) }
+            }
     }
+
+
 }

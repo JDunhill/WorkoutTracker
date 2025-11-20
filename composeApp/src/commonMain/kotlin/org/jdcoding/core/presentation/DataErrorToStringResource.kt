@@ -5,6 +5,7 @@ import workouttracker.composeapp.generated.resources.Res
 import workouttracker.composeapp.generated.resources.error_disk_full
 import workouttracker.composeapp.generated.resources.error_no_internet
 import workouttracker.composeapp.generated.resources.error_unknown
+import workouttracker.composeapp.generated.resources.no_workout_found
 
 fun DataError.toUiText(): UiText {
     val stringRes = when(this) {
@@ -12,6 +13,7 @@ fun DataError.toUiText(): UiText {
         DataError.Local.UNKNOWN -> Res.string.error_unknown
         DataError.Remote.NO_INTERNET -> Res.string.error_no_internet
         DataError.Remote.UNKNOWN -> Res.string.error_unknown
+        DataError.Local.NO_WORKOUT_FOUND -> Res.string.no_workout_found
     }
     return UiText.StringResourceId(stringRes)
 }

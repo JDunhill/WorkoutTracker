@@ -201,17 +201,13 @@ public fun WorkoutListScreen(
                                         }
 
                                         state.searchResults.isEmpty() -> {
-//                                            Text(
-//                                                text = stringResource(Res.string.no_search_results),
-//                                                textAlign = TextAlign.Center,
-//                                                style = MaterialTheme.typography.headlineSmall
-//                                            )
                                             WorkoutList(
-                                                workouts = workouts,
+                                                workouts = state.currentWorkouts,
                                                 onWorkoutClick = {
                                                     onAction(WorkoutListAction.OnWorkoutClick(it))
                                                 },
-                                                modifier = Modifier.fillMaxSize()
+                                                modifier = Modifier.fillMaxSize(),
+                                                scrollState = searchResultsListState
                                             )
                                         }
                                         else -> {

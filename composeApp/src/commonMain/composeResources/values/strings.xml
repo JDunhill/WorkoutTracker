@@ -18,6 +18,7 @@
     <string name="error_disk_full">Oops, your disk is full!</string>
     <string name="error_unknown">Oops, an unknown error occurred.</string>
     <string name="error_no_internet">You are not connected to the internet - please connect and try again.</string>
+    <string name="no_workout_found">No workout found">No workout found!</string>
 
 
 

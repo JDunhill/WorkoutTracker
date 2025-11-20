@@ -18,8 +18,8 @@ interface WorkoutDao {
     @Query("SELECT * FROM WorkoutEntity WHERE isFavourite = true")
     fun getFavouriteWorkouts(): Flow<List<WorkoutEntity>>
 
-    @Query("SELECT * FROM WorkoutEntity WHERE id = :id")
-    suspend fun getWorkout(id: String): WorkoutEntity?
+    @Query("SELECT * FROM WorkoutEntity WHERE name LIKE :query")
+    fun searchWorkouts(query: String): Flow<List<WorkoutEntity>>
 
     @Query("DELETE FROM WorkoutEntity WHERE id = :id")
     suspend fun deleteWorkout(id: String)

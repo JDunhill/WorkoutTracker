@@ -1,9 +1,11 @@
 package org.jdcoding.workouttracker.workoutZone.domain
 
+import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 import org.jdcoding.core.domain.DataError
 import org.jdcoding.core.domain.EmptyResult
 import org.jdcoding.core.domain.Result
+import workouttracker.composeapp.generated.resources.Res
 
 
 interface WorkoutRepository {
@@ -15,5 +17,5 @@ interface WorkoutRepository {
     suspend fun markAsFavourite(id: String)
     suspend fun deleteFromFavourites(id: String)
     suspend fun deleteWorkout(id: String)
-    suspend fun searchWorkouts(id: String): Result<List<Workout>, DataError.Local>
+    fun searchWorkouts(query: String): Flow<List<Workout>>
 }

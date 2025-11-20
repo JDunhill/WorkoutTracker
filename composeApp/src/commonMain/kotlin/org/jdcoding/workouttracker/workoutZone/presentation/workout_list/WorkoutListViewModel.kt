@@ -28,15 +28,13 @@ class WorkoutListViewModel(
     private val _state = MutableStateFlow(WorkoutListState())
     val state = _state
         .onStart {
-            if(cachedWorkouts.isEmpty()) {
-                observeSearchQuery()
-            }
-            observeFavouriteWorkouts()
-
             // TODO: currently dummy data
             workouts.forEach { workout ->
                 workoutRepository.addWorkout(workout)
             }
+            observeSearchQuery()
+            observeFavouriteWorkouts()
+            observeWorkouts()
         }
         .stateIn(
             viewModelScope,
@@ -44,9 +42,10 @@ class WorkoutListViewModel(
             _state.value
         )
 
-    private var cachedWorkouts = emptyList<Workout>()
+    private var cachedWorkouts = mutableListOf<Workout>()
     private var searchJob: Job? = null
     private var observeFavouriteJob: Job? = null
+    private var observeWorkoutsJob: Job? = null
 
     fun onAction(action: WorkoutListAction) {
         when(action) {
@@ -78,6 +77,18 @@ class WorkoutListViewModel(
             .launchIn(viewModelScope)
     }
 
+    private fun observeWorkouts() {
+        observeWorkoutsJob?.cancel()
+        observeWorkoutsJob = workoutRepository
+            .getWorkouts()
+            .onEach { workouts ->
+                _state.update { it.copy(
+                    currentWorkouts = workouts
+                ) }
+            }
+            .launchIn(viewModelScope)
+    }
+
     private fun observeSearchQuery() {
         state
             .map { it.searchQuery }
@@ -85,15 +96,19 @@ class WorkoutListViewModel(
             .debounce(500L)
             .onEach { query ->
                 when {
-                    query.isBlank() -> {
-                        _state.update { it.copy(
-                            errorMessage = null,
-                            searchResults = cachedWorkouts
-                        ) }
-                    }
-                    query.length >= 2 -> {
+                    query.isNotEmpty() -> {
                         searchJob?.cancel()
                         searchJob = searchWorkouts(query)
+                    }
+
+                    else -> {
+                        _state.update {
+                            it.copy(
+                                isLoading = false,
+                                errorMessage = null,
+                                searchResults = emptyList()
+                            )
+                        }
                     }
                 }
             }
@@ -104,25 +119,23 @@ class WorkoutListViewModel(
             _state.update { it.copy(
                 isLoading = true
             ) }
-            workoutRepository
-                .searchWorkouts(query)
-                .onSuccess { searchResults ->
-                    _state.update { it.copy(
+        workoutRepository
+            .getWorkouts()
+            .map {
+                it.filter { it.name == query }
+            }
+            .map { searchResults ->
+                println(searchResults)
+                _state.update {
+                    it.copy(
                         isLoading = false,
                         errorMessage = null,
                         searchResults = searchResults
                     )
-                    }
-
                 }
-                .onError { error ->
-                    _state.update { it.copy(
-                        isLoading = false,
-                        errorMessage = error.toUiText(),
-                        searchResults = emptyList()
-                    )
 
-                    }
-                }
+            }.launchIn(viewModelScope)
+
+
     }
 }
